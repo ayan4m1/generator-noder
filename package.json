@@ -1,0 +1,26 @@
+{
+  "name": "generator-noder",
+  "version": "0.1.0",
+  "description": "Create an opinionated Node application",
+  "files": [
+    "generators"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git.codecube.xyz:7999/web/generator-noder.git"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "generator",
+    "scaffold"
+  ],
+  "scripts": {
+    "build": "gulp",
+    "watch": "gulp watch"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "author": "ayan4m1 <andrew@bulletlogic.com>",
+  "license": "MIT"
+}
