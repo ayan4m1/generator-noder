@@ -15,14 +15,7 @@ const Generator = require('yeoman-generator');
 
 const packages = {
   lintStaged: ['husky', 'lint-staged'],
-  core: [
-    'normalize-scss',
-    'prop-types',
-    'react',
-    'react-dom',
-    'reselect',
-    'classnames'
-  ],
+  core: ['cosmiconfig', 'winston'],
   esdoc: ['esdoc', 'esdoc-ecmascript-proposal-plugin', 'esdoc-standard-plugin'],
   jest: ['babel-jest', 'eslint-plugin-jest', 'jest', 'react-test-renderer'],
   dev: [
