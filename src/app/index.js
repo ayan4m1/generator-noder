@@ -31,7 +31,6 @@ const packages = {
     'gulp-eslint',
     'eslint',
     'eslint-config-prettier',
-    'eslint-loader',
     'eslint-plugin-import',
     'eslint-plugin-prettier',
     'opener',
