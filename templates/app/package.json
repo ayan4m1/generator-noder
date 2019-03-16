@@ -1,0 +1,14 @@
+{
+  "name": "<%= package.name %>",
+  "version": "<%= package.version %>",
+  "description": "<%= package.description %>",
+  "author": "<%= author.name %> <<%= author.email %>>",
+  "license": "<%= package.license %>",
+  "scripts": {
+    "build": "gulp",
+    "test": "gulp test",
+    "develop": "gulp watch"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
