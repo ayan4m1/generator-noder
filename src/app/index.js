@@ -23,6 +23,8 @@ const packages = {
   dev: [
     '@babel/core',
     '@babel/plugin-proposal-object-rest-spread',
+    '@babel/plugin-transform-regenerator',
+    '@babel/plugin-transform-runtime',
     '@babel/preset-env',
     '@babel/register',
     'babel-eslint',
