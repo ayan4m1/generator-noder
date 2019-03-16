@@ -13,11 +13,15 @@ spdxIdentifiers.sort();
 // module.exports - no default export nor a named export is present for us to use
 const Generator = require('yeoman-generator');
 
+const src = (...paths) => join('src', ...paths);
+
 const packages = {
   lintStaged: ['husky', 'lint-staged'],
   core: ['cosmiconfig', 'winston'],
   esdoc: ['esdoc', 'esdoc-ecmascript-proposal-plugin', 'esdoc-standard-plugin'],
   jest: ['babel-jest', 'eslint-plugin-jest', 'jest', 'react-test-renderer'],
+  winston: ['winston'],
+  cosmiconfig: ['cosmiconfig'],
   dev: [
     '@babel/core',
     '@babel/plugin-proposal-object-rest-spread',
@@ -46,6 +50,8 @@ const files = {
   templated: ['.eslintrc.js', 'package.json'],
   esdoc: ['.esdoc.json'],
   jest: ['jest.config.js'],
+  winston: [src('logging.js')],
+  cosmiconfig: [src('config.js')],
   lintStaged: ['.huskyrc', '.lintstagedrc']
 };
 const scripts = {
@@ -129,48 +135,29 @@ export default class extends Generator {
       },
       {
         type: 'confirm',
-        name: 'flags.addFontAwesome',
-        message: 'Add Font Awesome?',
+        name: 'flags.addWinston',
+        message: 'Add Winston?',
         default: true
       },
       {
         type: 'confirm',
-        name: 'flags.addRedux',
-        message: 'Add Redux?',
+        name: 'flags.addCosmiconfig',
+        message: 'Add Cosmiconfig?',
         default: true
+      },
+      {
+        type: 'input',
+        name: 'package.configName',
+        message: 'Configuration module name ("test" -> ".testrc.yml")',
+        default: this.appname,
+        validate: input => /^[a-z0-9-_.]+$/.test(input),
+        when: answers => answers.flags.addCosmiconfig === true
       },
       {
         type: 'confirm',
         name: 'flags.addJest',
         message: 'Add Jest?',
         default: true
-      },
-      {
-        type: 'confirm',
-        name: 'flags.addStorybook',
-        message: 'Add Storybook?',
-        default: false
-      },
-      {
-        type: 'checkbox',
-        name: 'flags.storybookAddons',
-        message: 'Which Storybook addons would you like to use?',
-        choices: [
-          'actions',
-          'links',
-          'knobs',
-          'notes',
-          'info',
-          'options',
-          'console',
-          'backgrounds',
-          'a11y',
-          'viewport',
-          'storyshots',
-          'storysource',
-          'google-analytics'
-        ],
-        when: answers => answers.flags.addStorybook === true
       },
       {
         type: 'confirm',
@@ -228,6 +215,14 @@ export default class extends Generator {
 
     if (flags.addLintStaged) {
       files.lintStaged.forEach(this.fileSystem.copy);
+    }
+
+    if (flags.addCosmiconfig) {
+      files.cosmiconfig.forEach(this.fileSystem.copy);
+    }
+
+    if (flags.addWinston) {
+      files.winston.forEach(this.fileSystem.copy);
     }
   }
 
