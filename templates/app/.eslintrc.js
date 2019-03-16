@@ -167,12 +167,5 @@ module.exports = {
     "no-console": 2,
     "no-debugger": 2,
     "prettier/prettier": 2
-  },
-  "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": path.join(__dirname, 'webpack.config.babel.js')
-      }
-    }
   }
 };
