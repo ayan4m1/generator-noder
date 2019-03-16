@@ -36,7 +36,13 @@ const packages = {
   ]
 };
 const files = {
-  core: ['.babelrc', '.gitignore', '.prettierrc', '.editorconfig'],
+  core: [
+    '.babelrc',
+    '.gitignore',
+    '.prettierrc',
+    '.editorconfig',
+    'jsconfig.json'
+  ],
   templated: ['.eslintrc.js', 'package.json'],
   esdoc: ['.esdoc.json'],
   jest: ['jest.config.js'],
