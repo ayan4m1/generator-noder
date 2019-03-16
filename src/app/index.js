@@ -131,7 +131,7 @@ export default class extends Generator {
       {
         type: 'confirm',
         name: 'flags.addLintStaged',
-        message: 'Force linting before commits?',
+        message: 'Run linter before committing?',
         default: true
       },
       {
