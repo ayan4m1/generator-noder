@@ -129,7 +129,7 @@ module.exports = {
     "no-shadow-restricted-names": 0,
     "no-shadow": 2,
     "no-sparse-arrays": 2,
-    "no-sync": 2,
+    "no-sync": 0,
     "no-ternary": 0,
     "no-this-before-super": 2,
     "no-throw-literal": 2,

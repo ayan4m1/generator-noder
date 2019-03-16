@@ -217,7 +217,7 @@ export default class extends Generator {
     }
 
     if (flags.addCosmiconfig) {
-      files.cosmiconfig.forEach(this.fileSystem.copy);
+      files.cosmiconfig.forEach(this.fileSystem.copyTemplate);
     }
 
     if (flags.addWinston) {
