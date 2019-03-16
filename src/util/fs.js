@@ -11,10 +11,10 @@ export default gen => ({
       gen.answers
     );
   },
-  copyTemplate: (source, destination) => {
+  copyTemplate: file => {
     gen.fs.copyTpl(
-      gen.templatePath(source),
-      gen.destinationPath(destination),
+      gen.templatePath(file),
+      gen.destinationPath(file),
       gen.answers
     );
   },
