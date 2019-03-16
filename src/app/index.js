@@ -20,8 +20,6 @@ const packages = {
   core: ['cosmiconfig', 'winston'],
   esdoc: ['esdoc', 'esdoc-ecmascript-proposal-plugin', 'esdoc-standard-plugin'],
   jest: ['babel-jest', 'eslint-plugin-jest', 'jest', 'react-test-renderer'],
-  winston: ['winston'],
-  cosmiconfig: ['cosmiconfig'],
   dev: [
     '@babel/core',
     '@babel/plugin-proposal-object-rest-spread',
