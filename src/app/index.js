@@ -28,6 +28,9 @@ const packages = {
     '@babel/preset-env',
     '@babel/register',
     'babel-eslint',
+    'gulp',
+    'gulp-babel',
+    'gulp-eslint',
     'eslint',
     'eslint-config-prettier',
     'eslint-loader',
@@ -44,6 +47,7 @@ const files = {
     '.gitignore',
     '.prettierrc',
     '.editorconfig',
+    'gulpfile.babel.js',
     'jsconfig.json'
   ],
   templated: ['.eslintrc.js', 'package.json'],
