@@ -217,6 +217,12 @@ export default class extends Generator {
     }
 
     if (flags.addCosmiconfig) {
+      const { configName } = this.answers.package;
+
+      this.fileSystem.copyTo(
+        '.config.default.yml',
+        `${configName}.default.yml`
+      );
       files.cosmiconfig.forEach(this.fileSystem.copyTemplate);
     }
 
