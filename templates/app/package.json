@@ -6,7 +6,6 @@
   "license": "<%= package.license %>",
   "scripts": {
     "build": "gulp",
-    "test": "gulp test",
     "develop": "gulp watch"
   },
   "dependencies": {},
