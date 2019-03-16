@@ -30,7 +30,6 @@ const packages = {
     'babel-eslint',
     'eslint',
     'eslint-config-prettier',
-    'eslint-import-resolver-webpack',
     'eslint-loader',
     'eslint-plugin-import',
     'eslint-plugin-prettier',
