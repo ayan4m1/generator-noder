@@ -224,7 +224,7 @@ export default class extends Generator {
 
       this.fileSystem.copyTo(
         '.config.default.yml',
-        `${configName}.default.yml`
+        `.${configName}rc.default.yml`
       );
       files.cosmiconfig.forEach(this.fileSystem.copyTemplate);
     }
