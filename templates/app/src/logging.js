@@ -27,7 +27,7 @@ const createLogger = (category, categoryLabel) => {
     ]
   });
 
-  loggers[category] = container.get(category);
+  return container.get(category);
 };
 
 export default (category, categoryLabel = category) => {
