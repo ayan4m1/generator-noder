@@ -19,7 +19,7 @@ const packages = {
   lintStaged: ['husky', 'lint-staged'],
   core: ['cosmiconfig', 'winston'],
   esdoc: ['esdoc', 'esdoc-ecmascript-proposal-plugin', 'esdoc-standard-plugin'],
-  jest: ['babel-jest', 'eslint-plugin-jest', 'jest', 'react-test-renderer'],
+  jest: ['babel-jest', 'eslint-plugin-jest', 'jest'],
   dev: [
     '@babel/core',
     '@babel/plugin-proposal-object-rest-spread',
