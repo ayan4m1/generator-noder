@@ -18,8 +18,13 @@ const src = (...paths) => join('src', ...paths);
 const packages = {
   lintStaged: ['husky', 'lint-staged'],
   core: ['cosmiconfig', 'winston'],
-  esdoc: ['esdoc', 'esdoc-ecmascript-proposal-plugin', 'esdoc-standard-plugin'],
-  jest: ['babel-jest', 'eslint-plugin-jest', 'jest'],
+  esdoc: [
+    'esdoc',
+    'esdoc-ecmascript-proposal-plugin',
+    'esdoc-standard-plugin',
+    'opener'
+  ],
+  jest: ['babel-jest', 'eslint-plugin-jest', 'jest', 'opener'],
   dev: [
     '@babel/core',
     '@babel/plugin-proposal-object-rest-spread',
@@ -35,7 +40,6 @@ const packages = {
     'eslint-config-prettier',
     'eslint-plugin-import',
     'eslint-plugin-prettier',
-    'opener',
     'prettier',
     'prettier-eslint'
   ]
