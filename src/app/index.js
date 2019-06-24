@@ -17,7 +17,7 @@ const src = (...paths) => join('src', ...paths);
 
 const packages = {
   lintStaged: ['husky', 'lint-staged'],
-  core: ['cosmiconfig', 'winston'],
+  core: ['winston'],
   esdoc: [
     'esdoc',
     'esdoc-ecmascript-proposal-plugin',
