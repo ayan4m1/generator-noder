@@ -3,6 +3,7 @@ import gulpIf from 'gulp-if';
 import { format } from 'date-fns';
 import fileSystem from '../util/fs';
 import prettier from 'gulp-prettier';
+import { readFileSync } from 'jsonfile';
 import request from 'request-promise-native';
 import spdxIdentifiers from 'spdx-license-ids';
 
@@ -14,6 +15,9 @@ spdxIdentifiers.sort();
 const Generator = require('yeoman-generator');
 
 const src = (...paths) => join('src', ...paths);
+
+const getPrettierConfig = () =>
+  readFileSync(join(__dirname, '..', '..', '.prettierrc'));
 
 const packages = {
   lintStaged: ['husky', 'lint-staged'],
@@ -83,7 +87,9 @@ export default class extends Generator {
 
     this.answers = {};
     this.fileSystem = fileSystem(this);
-    this.registerTransformStream(gulpIf(/\.js$/, prettier()));
+    this.registerTransformStream(
+      gulpIf(/\.js$/, prettier(getPrettierConfig()))
+    );
   }
 
   async prompting() {
