@@ -22,6 +22,7 @@ const createLogger = (category, categoryLabel) => {
   container.add(category, {
     transports: [
       new transports.Console({
+        level: config.level,
         format: combine.apply(null, formatters)
       })
     ]
