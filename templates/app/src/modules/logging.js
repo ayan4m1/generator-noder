@@ -1,9 +1,8 @@
 import { Container, format, transports } from 'winston';
 
-import configs from './config';
+import { logging as config } from 'modules/config';
 
 const { combine, label, prettyPrint, printf, timestamp } = format;
-const { logging: config } = configs;
 
 const loggers = {};
 const container = new Container();
@@ -12,8 +11,8 @@ const createLogger = (category, categoryLabel) => {
   let formatter = data => `[${data.level}][${data.label}] ${data.message}`;
   const formatters = [label({ label: categoryLabel })];
 
-  if (config.timestamp !== false) {
-    formatters.push(timestamp({ format: config.timestamp }));
+  if (config.timestampFormat) {
+    formatters.push(timestamp({ format: config.timestampFormat }));
     formatter = data =>
       `${data.timestamp} [${data.level}][${data.label}] ${data.message}`;
   }

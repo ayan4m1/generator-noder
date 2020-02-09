@@ -21,7 +21,7 @@ const getPrettierConfig = () =>
 
 const packages = {
   lintStaged: ['husky', 'lint-staged'],
-  core: ['@babel/runtime', 'winston'],
+  core: ['@babel/runtime'],
   esdoc: [
     'esdoc',
     'esdoc-ecmascript-proposal-plugin',
@@ -46,7 +46,9 @@ const packages = {
     'eslint-plugin-prettier',
     'prettier',
     'prettier-eslint'
-  ]
+  ],
+  config: ['dotenv'],
+  logging: ['winston']
 };
 const files = {
   core: [
@@ -55,13 +57,14 @@ const files = {
     '.prettierrc',
     '.editorconfig',
     'gulpfile.babel.js',
-    'jsconfig.json'
+    'jsconfig.json',
+    src('index.js')
   ],
   templated: ['.eslintrc.js', 'package.json'],
   esdoc: ['.esdoc.json'],
   jest: ['jest.config.js'],
-  winston: [src('logging.js')],
-  cosmiconfig: [src('config.js')],
+  winston: [src('modules', 'logging.js')],
+  dotenv: [src('modules', 'config.js'), '.env.default'],
   lintStaged: ['.huskyrc', '.lintstagedrc']
 };
 const scripts = {
@@ -153,17 +156,17 @@ export default class extends Generator {
       },
       {
         type: 'confirm',
-        name: 'flags.addCosmiconfig',
-        message: 'Add Cosmiconfig?',
+        name: 'flags.addDotenv',
+        message: 'Add dotenv?',
         default: true
       },
       {
         type: 'input',
-        name: 'package.configName',
-        message: 'Configuration module name ("test" -> ".testrc.yml")',
+        name: 'package.configPrefix',
+        message: 'Prefix for environment variables (e.g. "APP" -> "APP_XXX")',
         default: this.appname,
-        validate: input => /^[a-z0-9-_.]+$/.test(input),
-        when: answers => answers.flags.addCosmiconfig === true
+        validate: input => /^[A-Z0-9-_.]+$/.test(input),
+        when: answers => answers.flags.addDotenv === true
       },
       {
         type: 'confirm',
@@ -229,14 +232,8 @@ export default class extends Generator {
       files.lintStaged.forEach(this.fileSystem.copy);
     }
 
-    if (flags.addCosmiconfig) {
-      const { configName } = this.answers.package;
-
-      this.fileSystem.copyTo(
-        '.config.default.yml',
-        `.${configName}rc.default.yml`
-      );
-      files.cosmiconfig.forEach(this.fileSystem.copyTemplate);
+    if (flags.addDotenv) {
+      files.dotenv.forEach(this.fileSystem.copyTemplate);
     }
 
     if (flags.addWinston) {
@@ -260,6 +257,14 @@ export default class extends Generator {
 
     if (flags.addJest) {
       dev.push.apply(dev, packages.jest);
+    }
+
+    if (flags.addDotenv) {
+      main.push.apply(main, packages.config);
+    }
+
+    if (flags.addWinston) {
+      main.push.apply(main, packages.logging);
     }
 
     if (flags.addESDoc) {
