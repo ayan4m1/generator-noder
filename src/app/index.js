@@ -233,6 +233,7 @@ export default class extends Generator {
     }
 
     if (flags.addDotenv) {
+      this.fs.append(this.destinationPath('.gitignore'), '.env');
       files.dotenv.forEach(this.fileSystem.copyTemplate);
     }
 
