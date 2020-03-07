@@ -27,6 +27,11 @@ module.exports = {
     "ecmaVersion": 9,
     "sourceType": "module"
   },
+  "settings": {
+    "import/resolver": {
+      alias: [["modules", "./src/modules"]]
+    }
+  },
   "rules": {
     "accessor-pairs": 2,
     "block-scoped-var": 2,
