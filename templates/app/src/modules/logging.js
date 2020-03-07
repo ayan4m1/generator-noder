@@ -30,7 +30,7 @@ const createLogger = (category, categoryLabel) => {
   return container.get(category);
 };
 
-export default (category, categoryLabel = category) => {
+export const getLogger = (category, categoryLabel = category) => {
   if (!loggers[category]) {
     loggers[category] = createLogger(category, categoryLabel);
   }
