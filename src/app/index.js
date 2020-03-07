@@ -37,6 +37,7 @@ const packages = {
     '@babel/preset-env',
     '@babel/register',
     'babel-eslint',
+    'del',
     'gulp',
     'gulp-babel',
     'gulp-eslint',
