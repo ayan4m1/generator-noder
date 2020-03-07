@@ -3,7 +3,8 @@
   "version": "0.1.5",
   "description": "Create an opinionated Node application",
   "files": [
-    "generators"
+    "generators",
+    "templates"
   ],
   "repository": {
     "type": "git",
