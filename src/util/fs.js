@@ -1,20 +1,20 @@
 import mkdirp from 'mkdirp';
 
-export default gen => ({
-  copy: file => {
+export default (gen) => ({
+  copy: (file) => {
     gen.fs.copy(gen.templatePath(file), gen.destinationPath(file));
   },
   copyTo: (source, destination) => {
     gen.fs.copy(gen.templatePath(source), gen.destinationPath(destination));
   },
-  copyDirectory: async dir => {
+  copyDirectory: async (dir) => {
     gen.fs.copyTpl(
       gen.templatePath(`${dir}/**/*`),
       gen.destinationPath(dir),
       gen.answers
     );
   },
-  copyTemplate: file => {
+  copyTemplate: (file) => {
     gen.fs.copyTpl(
       gen.templatePath(file),
       gen.destinationPath(file),

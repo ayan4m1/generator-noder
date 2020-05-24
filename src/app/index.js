@@ -121,9 +121,9 @@ export default class extends Generator {
         source: (_, input) => {
           const pattern = new RegExp(`.*${input}.*`, 'i');
 
-          return new Promise(resolve => {
+          return new Promise((resolve) => {
             resolve(
-              spdxIdentifiers.filter(identifier => pattern.test(identifier))
+              spdxIdentifiers.filter((identifier) => pattern.test(identifier))
             );
           });
         }
@@ -168,8 +168,8 @@ export default class extends Generator {
         name: 'package.configPrefix',
         message: 'Prefix for environment variables (e.g. "APP" -> "APP_XXX")',
         default: this.appname,
-        validate: input => /^[A-Z0-9-_.]+$/.test(input),
-        when: answers => answers.flags.addDotenv === true
+        validate: (input) => /^[A-Z0-9-_.]+$/.test(input),
+        when: (answers) => answers.flags.addDotenv === true
       },
       {
         type: 'confirm',
