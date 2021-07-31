@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import fileSystem from '../util/fs';
 import prettier from 'gulp-prettier';
 import { readFileSync } from 'jsonfile';
-import request from 'request-promise-native';
+import got from 'got';
 import spdxIdentifiers from 'spdx-license-ids';
 
 spdxIdentifiers.push('SEE LICENSE IN LICENSE');
@@ -197,7 +197,7 @@ export default class extends Generator {
 
     if (license !== 'SEE LICENSE IN LICENSE') {
       this.log(`Downloading ${license} license from spdx/license-list-data...`);
-      const rawLicense = await request(
+      const { body: rawLicense } = await got(
         `https://raw.githubusercontent.com/spdx/license-list-data/master/text/${license}.txt`
       );
 
