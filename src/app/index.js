@@ -167,7 +167,7 @@ export default class extends Generator {
         type: 'input',
         name: 'package.configPrefix',
         message: 'Prefix for environment variables (e.g. "APP" -> "APP_XXX")',
-        default: this.appname,
+        default: this.appname.substr(0, 3).toUpperCase(),
         validate: (input) => /^[A-Z0-9-_.]+$/.test(input),
         when: (answers) => answers.flags.addDotenv === true
       },
