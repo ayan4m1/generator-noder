@@ -68,7 +68,7 @@ const files = {
   jest: ['jest.config.js'],
   winston: [src('modules', 'logging.js')],
   dotenv: [src('modules', 'config.js'), '.env.default'],
-  lintStaged: ['.huskyrc', '.lintstagedrc']
+  lintStaged: ['.lintstagedrc']
 };
 const scripts = {
   esdoc: {
