@@ -31,12 +31,12 @@ const packages = {
   jest: ['babel-jest', 'eslint-plugin-jest', 'jest', 'opener'],
   dev: [
     '@babel/core',
+    '@babel/eslint-parser',
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-transform-regenerator',
     '@babel/plugin-transform-runtime',
     '@babel/preset-env',
     '@babel/register',
-    'babel-eslint',
     'babel-plugin-module-resolver',
     'del',
     'gulp',

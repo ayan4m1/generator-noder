@@ -22,10 +22,10 @@ module.exports = {
     "plugin:import/errors",
     "prettier"
   ],
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "ecmaVersion": 9,
-    "sourceType": "module"
+    "requireConfigFile": false,
+    "ecmaVersion": 12
   },
   "settings": {
     "import/resolver": {
