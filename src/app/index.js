@@ -280,5 +280,13 @@ export default class extends Generator {
     );
     this.npmInstall(main, { save: true });
     this.npmInstall(dev, { 'save-dev': true });
+    this.spawnCommandSync('git', ['init']);
+    this.spawnCommandSync('npx', ['husky', 'install']);
+    this.spawnCommandSync('npx', [
+      'husky',
+      'add',
+      '.husky/pre-commit',
+      'npx lint-staged'
+    ]);
   }
 }
