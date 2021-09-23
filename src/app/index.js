@@ -20,7 +20,7 @@ const getPrettierConfig = () =>
   readFileSync(join(__dirname, '..', '..', '.prettierrc'));
 
 const packages = {
-  lintStaged: ['husky', 'lint-staged'],
+  lintHooks: ['husky', 'lint-staged'],
   core: ['@babel/runtime'],
   esdoc: [
     'esdoc',
@@ -46,6 +46,7 @@ const packages = {
     'eslint-plugin-prettier',
     'eslint',
     'prettier',
+    'rollup',
     'rollup-plugin-auto-external',
     'rollup-plugin-multi-input',
     'rollup-plugin-terser'
@@ -68,7 +69,7 @@ const files = {
   jest: ['jest.config.js'],
   winston: [src('modules', 'logging.js')],
   dotenv: [src('modules', 'config.js'), '.env.default'],
-  lintStaged: ['.lintstagedrc']
+  lintHooks: ['.lintstagedrc']
 };
 const scripts = {
   esdoc: {
@@ -147,7 +148,7 @@ export default class extends Generator {
       },
       {
         type: 'confirm',
-        name: 'flags.addLintStaged',
+        name: 'flags.addLintHooks',
         message: 'Run linter before committing?',
         default: true
       },
@@ -231,8 +232,8 @@ export default class extends Generator {
       });
     }
 
-    if (flags.addLintStaged) {
-      files.lintStaged.forEach(this.fileSystem.copy);
+    if (flags.addLintHooks) {
+      files.lintHooks.forEach(this.fileSystem.copy);
     }
 
     if (flags.addDotenv) {
@@ -255,8 +256,8 @@ export default class extends Generator {
     main.push.apply(main, packages.core);
     dev.push.apply(dev, packages.dev);
 
-    if (flags.addLintStaged) {
-      dev.push.apply(dev, packages.lintStaged);
+    if (flags.addLintHooks) {
+      dev.push.apply(dev, packages.lintHooks);
     }
 
     if (flags.addJest) {
@@ -280,13 +281,16 @@ export default class extends Generator {
     );
     this.npmInstall(main, { save: true });
     this.npmInstall(dev, { 'save-dev': true });
-    this.spawnCommandSync('git', ['init']);
-    this.spawnCommandSync('npx', ['husky', 'install']);
-    this.spawnCommandSync('npx', [
-      'husky',
-      'add',
-      '.husky/pre-commit',
-      'npx lint-staged'
-    ]);
+
+    if (flags.addLintHooks) {
+      this.spawnCommandSync('git', ['init']);
+      this.spawnCommandSync('npx', ['husky', 'install']);
+      this.spawnCommandSync('npx', [
+        'husky',
+        'add',
+        '.husky/pre-commit',
+        'npx lint-staged'
+      ]);
+    }
   }
 }
