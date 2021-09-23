@@ -5,8 +5,8 @@
   "author": "<%= author.name %> <<%= author.email %>>",
   "license": "<%= package.license %>",
   "scripts": {
-    "build": "gulp",
-    "develop": "gulp watch"
+    "build": "rollup -c",
+    "develop": "rollup -c -w"
   },
   "dependencies": {},
   "devDependencies": {}

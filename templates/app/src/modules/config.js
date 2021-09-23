@@ -1,4 +1,4 @@
-import 'dotenv/config';
+require('dotenv/config');
 
 export const logging = {
   level: process.env.<%= package.configPrefix %>_LOG_LEVEL || 'info',

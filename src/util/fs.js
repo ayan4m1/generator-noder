@@ -1,6 +1,6 @@
-import mkdirp from 'mkdirp';
+import { mkdirp } from 'mkdirp';
 
-export default (gen) => ({
+export const wrapFs = (gen) => ({
   copy: (file) => {
     gen.fs.copy(gen.templatePath(file), gen.destinationPath(file));
   },

@@ -1,7 +1,7 @@
 import { join } from 'path';
 import gulpIf from 'gulp-if';
 import { format } from 'date-fns';
-import fileSystem from '../util/fs';
+import { wrapFs } from '../util/fs';
 import prettier from 'gulp-prettier';
 import { readFileSync } from 'jsonfile';
 import got from 'got';
@@ -37,18 +37,18 @@ const packages = {
     '@babel/plugin-transform-runtime',
     '@babel/preset-env',
     '@babel/register',
+    '@rollup/plugin-babel',
+    '@rollup/plugin-node-resolve',
     'babel-plugin-module-resolver',
-    'del',
-    'gulp',
-    'gulp-babel',
-    'gulp-eslint',
-    'eslint',
     'eslint-config-prettier',
-    'eslint-import-resolver-alias',
+    'eslint-import-resolver-node',
     'eslint-plugin-import',
     'eslint-plugin-prettier',
+    'eslint',
     'prettier',
-    'prettier-eslint'
+    'rollup-plugin-auto-external',
+    'rollup-plugin-multi-input',
+    'rollup-plugin-terser'
   ],
   config: ['dotenv'],
   logging: ['winston']
@@ -59,8 +59,8 @@ const files = {
     '.gitignore',
     '.prettierrc',
     '.editorconfig',
-    'gulpfile.babel.js',
     'jsconfig.json',
+    'rollup.config.js',
     src('index.js')
   ],
   templated: ['.eslintrc.js', 'package.json'],
@@ -92,7 +92,7 @@ export default class extends Generator {
     this.sourceRoot(join(__dirname, '..', '..', 'templates', 'app'));
 
     this.answers = {};
-    this.fileSystem = fileSystem(this);
+    this.fileSystem = wrapFs(this);
     this.registerTransformStream(
       gulpIf(/\.js$/, prettier(getPrettierConfig()))
     );
