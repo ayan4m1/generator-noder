@@ -21,7 +21,6 @@ const getPrettierConfig = () =>
 
 const packages = {
   lintHooks: ['husky', 'lint-staged'],
-  core: ['@babel/runtime'],
   esdoc: [
     'esdoc',
     'esdoc-ecmascript-proposal-plugin',
@@ -30,43 +29,28 @@ const packages = {
   ],
   jest: ['babel-jest', 'eslint-plugin-jest', 'jest', 'opener'],
   dev: [
-    '@babel/core',
     '@babel/eslint-parser',
-    '@babel/plugin-proposal-object-rest-spread',
-    '@babel/plugin-transform-regenerator',
-    '@babel/plugin-transform-runtime',
-    '@babel/preset-env',
-    '@babel/register',
-    '@rollup/plugin-babel',
-    '@rollup/plugin-node-resolve',
-    'babel-plugin-module-resolver',
     'eslint-config-prettier',
     'eslint-import-resolver-node',
     'eslint-plugin-import',
     'eslint-plugin-prettier',
     'eslint',
-    'prettier',
-    'rollup',
-    'rollup-plugin-auto-external',
-    'rollup-plugin-multi-input',
-    'rollup-plugin-terser'
+    'prettier'
   ],
   config: ['dotenv'],
   logging: ['winston']
 };
 const files = {
   core: [
-    '.babelrc',
     '.gitignore',
     '.prettierrc',
     '.editorconfig',
     'jsconfig.json',
-    'rollup.config.js',
     src('index.js')
   ],
-  templated: ['.eslintrc.js', 'package.json'],
+  templated: ['.eslintrc.cjs', 'package.json'],
   esdoc: ['.esdoc.json'],
-  jest: ['jest.config.js'],
+  jest: ['jest.config.cjs'],
   winston: [src('modules', 'logging.js')],
   dotenv: [src('modules', 'config.js'), '.env.default'],
   lintHooks: ['.lintstagedrc']
@@ -253,7 +237,6 @@ export default class extends Generator {
 
     this.log('Building a list of packages to install');
 
-    main.push.apply(main, packages.core);
     dev.push.apply(dev, packages.dev);
 
     if (flags.addLintHooks) {

@@ -1,19 +1,20 @@
-import { Container, format, transports } from 'winston';
+import winston from 'winston';
 
-import { logging as config } from 'modules/config';
+import { logging as config } from './modules/config.js';
 
+const { Container, format, transports } = winston;
 const { combine, label, prettyPrint, printf, timestamp } = format;
 
 const loggers = {};
 const container = new Container();
 
 const createLogger = (category, categoryLabel) => {
-  let formatter = data => `[${data.level}][${data.label}] ${data.message}`;
+  let formatter = (data) => `[${data.level}][${data.label}] ${data.message}`;
   const formatters = [label({ label: categoryLabel })];
 
   if (config.timestampFormat) {
     formatters.push(timestamp({ format: config.timestampFormat }));
-    formatter = data =>
+    formatter = (data) =>
       `${data.timestamp} [${data.level}][${data.label}] ${data.message}`;
   }
 

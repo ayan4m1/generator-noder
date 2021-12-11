@@ -4,9 +4,9 @@
   "description": "<%= package.description %>",
   "author": "<%= author.name %> <<%= author.email %>>",
   "license": "<%= package.license %>",
+  "type": "module",
   "scripts": {
-    "build": "rollup -c",
-    "develop": "rollup -c -w"
+    "start": "node src/index.js"
   },
   "dependencies": {},
   "devDependencies": {}

@@ -1,6 +1,5 @@
 module.exports = {
   "env": {
-    "commonjs": true,
     "es2020": true,
     <% if (flags.addJest) { %>
     "jest": true,
