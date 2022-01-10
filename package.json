@@ -21,7 +21,7 @@
     "develop": "rollup -c -w"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "author": "ayan4m1 <andrew@bulletlogic.com>",
   "license": "MIT",
