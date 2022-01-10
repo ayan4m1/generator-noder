@@ -3,6 +3,7 @@ import { terser } from 'rollup-plugin-terser';
 import autoExternal from 'rollup-plugin-auto-external';
 import babel from '@rollup/plugin-babel';
 import multiInput from 'rollup-plugin-multi-input';
+import eslint from '@rollup/plugin-eslint';
 
 export default {
   input: './src/**/*.js',
@@ -12,6 +13,7 @@ export default {
     exports: 'auto'
   },
   plugins: [
+    eslint(),
     autoExternal(),
     multiInput(),
     nodeResolve(),
