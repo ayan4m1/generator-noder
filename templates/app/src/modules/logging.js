@@ -1,6 +1,6 @@
 import winston from 'winston';
 
-import { logging as config } from './modules/config.js';
+import { logging as config } from './config.js';
 
 const { Container, format, transports } = winston;
 const { combine, label, prettyPrint, printf, timestamp } = format;

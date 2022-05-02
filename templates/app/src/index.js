@@ -1,4 +1,4 @@
-import { getLogger } from 'modules/logging';
+import { getLogger } from './modules/logging.js';
 
 const log = getLogger('app');
 
