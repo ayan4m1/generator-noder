@@ -1,3 +1,4 @@
+import { existsSync } from 'fs';
 import { mkdirp } from 'mkdirp';
 
 export const wrapFs = (gen) => ({
@@ -16,7 +17,7 @@ export const wrapFs = (gen) => ({
   },
   copyTemplate: (file) => {
     gen.fs.copyTpl(
-      gen.templatePath(file),
+      gen.templatePath(existsSync(`${file}.tpl`) ? `${file}.tpl` : file),
       gen.destinationPath(file),
       gen.answers
     );
