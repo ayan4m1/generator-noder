@@ -1,6 +1,6 @@
 {
   "name": "generator-noder",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Create an opinionated Node application",
   "files": [
     "generators",
