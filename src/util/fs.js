@@ -17,7 +17,9 @@ export const wrapFs = (gen) => ({
   },
   copyTemplate: (file) => {
     gen.fs.copyTpl(
-      gen.templatePath(existsSync(`${file}.tpl`) ? `${file}.tpl` : file),
+      gen.templatePath(
+        existsSync(gen.templatePath(`${file}.tpl`)) ? `${file}.tpl` : file
+      ),
       gen.destinationPath(file),
       gen.answers
     );
