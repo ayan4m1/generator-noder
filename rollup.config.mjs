@@ -15,10 +15,10 @@ export default {
   plugins: [
     eslint(),
     autoExternal(),
-    multiInput(),
+    multiInput.default(),
     nodeResolve(),
     babel({
-      babelHelpers: 'runtime'
+      babelHelpers: 'bundled'
     }),
     terser()
   ]
