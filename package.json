@@ -1,6 +1,6 @@
 {
   "name": "generator-noder",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Create an opinionated Node application",
   "files": [
     "generators",
@@ -29,7 +29,7 @@
   },
   "author": "ayan4m1 <andrew@bulletlogic.com>",
   "license": "MIT",
-"dependencies": {
+  "dependencies": {
     "date-fns": "^2.30.0",
     "got": "^11.8.3",
     "gulp-if": "^3.0.0",
