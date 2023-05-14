@@ -9,3 +9,5 @@ Here's the mile-long list of technologies the generated project can leverage:
 - [ESLint](https://eslint.org/) - Apply hundreds of style/usage rules to ECMAScript
 - [Prettier](https://prettier.io/) - Apply style/formatting rules to code
 - [Jest](https://jestjs.io/) - Optional test framework
+- [winston](https://github.com/winstonjs/winston) - Optional logging framework
+- [dotenv](https://github.com/motdotla/dotenv) - Optional configuration framework
