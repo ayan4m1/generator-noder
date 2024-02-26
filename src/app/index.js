@@ -1,18 +1,25 @@
-import { join } from 'path';
+import { dirname, join } from 'path';
 import gulpIf from 'gulp-if';
 import { format } from 'date-fns';
 import { wrapFs } from '../util/fs';
 import prettier from 'gulp-prettier';
-import { readFileSync } from 'jsonfile';
-import got from 'got';
-import spdxIdentifiers from 'spdx-license-ids';
+import jsonfile from 'jsonfile';
+import { got } from 'got';
+import spdxIdentifiers from 'spdx-license-ids' assert { type: 'json' };
+import { fileURLToPath } from 'url';
+import inquirerPrompt from 'inquirer-autocomplete-prompt/index.js';
 
 spdxIdentifiers.push('SEE LICENSE IN LICENSE');
 spdxIdentifiers.sort();
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// jsonfile is still using CJS
+const { readFileSync } = jsonfile;
+
 // we cannot use ES6 imports on this object, as it directly exports a class to
 // module.exports - no default export nor a named export is present for us to use
-const Generator = require('yeoman-generator');
+const Generator = await import('yeoman-generator');
 
 const src = (...paths) => join('src', ...paths);
 
@@ -72,7 +79,7 @@ export default class extends Generator {
 
     this.env.adapter.promptModule.registerPrompt(
       'autocomplete',
-      require('inquirer-autocomplete-prompt')
+      inquirerPrompt
     );
     this.sourceRoot(join(__dirname, '..', '..', 'templates', 'app'));
 
