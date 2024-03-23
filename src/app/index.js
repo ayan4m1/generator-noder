@@ -1,7 +1,7 @@
 import { dirname, join } from 'path';
 import gulpIf from 'gulp-if';
 import { format } from 'date-fns';
-import { wrapFs } from '../util/fs';
+import { wrapFs } from '../util/fs.js';
 import prettier from 'gulp-prettier';
 import jsonfile from 'jsonfile';
 import { got } from 'got';
@@ -55,11 +55,11 @@ const files = {
     'jsconfig.json',
     src('index.js')
   ],
-  templated: ['.eslintrc.cjs', 'package.json'],
+  templated: ['.eslintrc.js', src('modules', 'config.js'), 'package.json'],
   esdoc: ['.esdoc.json'],
   jest: ['jest.config.cjs'],
   winston: [src('modules', 'logging.js')],
-  dotenv: [src('modules', 'config.js'), '.env.default'],
+  dotenv: ['.env.default'],
   lintHooks: ['.lintstagedrc']
 };
 const scripts = {

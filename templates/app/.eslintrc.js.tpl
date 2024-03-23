@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   "env": {
     "es2020": true,
     <% if (flags.addJest) { %>
