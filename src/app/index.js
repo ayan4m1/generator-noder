@@ -34,7 +34,7 @@ const packages = {
     'esdoc-standard-plugin',
     'opener'
   ],
-  jest: ['babel-jest', 'eslint-plugin-jest', 'jest', 'opener'],
+  jest: ['@babel/core', 'babel-jest', 'eslint-plugin-jest', 'jest', 'opener'],
   dev: [
     '@babel/eslint-parser',
     'eslint-config-prettier',
