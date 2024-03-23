@@ -31,8 +31,8 @@
   "author": "ayan4m1 <andrew@bulletlogic.com>",
   "license": "MIT",
   "dependencies": {
-    "date-fns": "^3.3.1",
-    "got": "^14.2.0",
+    "date-fns": "^3.6.0",
+    "got": "^14.2.1",
     "gulp-if": "^3.0.0",
     "gulp-prettier": "^6.0.0",
     "inquirer": "9.x",
@@ -43,10 +43,10 @@
     "yeoman-generator": "^4.13.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "@babel/eslint-parser": "^7.23.10",
-    "@babel/plugin-syntax-import-assertions": "^7.23.3",
-    "@babel/preset-env": "^7.23.9",
+    "@babel/core": "^7.24.3",
+    "@babel/eslint-parser": "^7.24.1",
+    "@babel/plugin-syntax-import-assertions": "^7.24.1",
+    "@babel/preset-env": "^7.24.3",
     "@babel/register": "^7.23.7",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
@@ -61,7 +61,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
-    "rollup": "^4.12.0",
+    "rollup": "^4.13.0",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-multi-input": "^1.4.1"
   }
