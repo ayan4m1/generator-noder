@@ -2,7 +2,21 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.7.0](https://github.com/ayan4m1/generator-noder/compare/v0.6.0...v0.7.0)
+
+- wip upgrade changes [`24bb93a`](https://github.com/ayan4m1/generator-noder/commit/24bb93a963db2f1b1651914717976454d385c01a)
+- upgrade deps [`875bc18`](https://github.com/ayan4m1/generator-noder/commit/875bc180055f5ad4f97aec06ec9325c80a9c8c43)
+- upgrade deps [`ee3048a`](https://github.com/ayan4m1/generator-noder/commit/ee3048a08a312344fc24d736fbcbb186ed69e31d)
+- remove rollup file and default config export, correctly mark config.js as a template [`c26a246`](https://github.com/ayan4m1/generator-noder/commit/c26a2468b0721d9dd752fe9635f9fbe84726e8af)
+- convert jest config to json [`0952627`](https://github.com/ayan4m1/generator-noder/commit/0952627394fb27858bb2941d5bdb7b877e550b91)
+- fix rollup config and update some ESM things [`e758255`](https://github.com/ayan4m1/generator-noder/commit/e758255abab1fcef7430476a780376b3de2c0393)
+- target nodejs 20 [`dad05d2`](https://github.com/ayan4m1/generator-noder/commit/dad05d23376f75441c140f27278bbd87e0c6c080)
+- add missing dep of babel-jest [`39892f7`](https://github.com/ayan4m1/generator-noder/commit/39892f7aa3c11cc63384274b29a770e5568c9bd5)
+- no more lib directory to ignore [`a72e6ee`](https://github.com/ayan4m1/generator-noder/commit/a72e6ee5cda59cf2c2cc7437ce227b5438b9e378)
+
 #### [v0.6.0](https://github.com/ayan4m1/generator-noder/compare/v0.5.1...v0.6.0)
+
+> 14 May 2023
 
 - upgrade dependencies [`b441487`](https://github.com/ayan4m1/generator-noder/commit/b44148779b51642990a26d3a96d89dce428759d2)
 - fix broken builds by updating babel config [`bba634e`](https://github.com/ayan4m1/generator-noder/commit/bba634e12c4751f997132f30320471765801f185)
