@@ -1,13 +1,14 @@
-import { dirname, join } from 'path';
-import gulpIf from 'gulp-if';
-import { format } from 'date-fns';
-import { wrapFs } from '../util/fs.js';
-import prettier from 'gulp-prettier';
-import jsonfile from 'jsonfile';
 import { got } from 'got';
-import spdxIdentifiers from 'spdx-license-ids' assert { type: 'json' };
+import gulpIf from 'gulp-if';
+import jsonfile from 'jsonfile';
+import { format } from 'date-fns';
 import { fileURLToPath } from 'url';
-import inquirerPrompt from 'inquirer-autocomplete-prompt/index.js';
+import prettier from 'gulp-prettier';
+import { dirname, join } from 'path';
+import { wrapFs } from '../util/fs.js';
+import Generator from 'yeoman-generator';
+import inquirerPrompt from 'inquirer-autocomplete-prompt';
+import spdxIdentifiers from 'spdx-license-ids' assert { type: 'json' };
 
 spdxIdentifiers.push('SEE LICENSE IN LICENSE');
 spdxIdentifiers.sort();
@@ -16,10 +17,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // jsonfile is still using CJS
 const { readFileSync } = jsonfile;
-
-// we cannot use ES6 imports on this object, as it directly exports a class to
-// module.exports - no default export nor a named export is present for us to use
-const Generator = await import('yeoman-generator');
 
 const src = (...paths) => join('src', ...paths);
 
@@ -113,11 +110,9 @@ export default class extends Generator {
         source: (_, input) => {
           const pattern = new RegExp(`.*${input}.*`, 'i');
 
-          return new Promise((resolve) => {
-            resolve(
-              spdxIdentifiers.filter((identifier) => pattern.test(identifier))
-            );
-          });
+          return Promise.resolve(
+            spdxIdentifiers.filter((identifier) => pattern.test(identifier))
+          );
         }
       },
       {

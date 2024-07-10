@@ -3,9 +3,9 @@ import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
 import eslint from '@rollup/plugin-eslint';
 import commonjs from '@rollup/plugin-commonjs';
-import multiInput from 'rollup-plugin-multi-input';
 import autoExternal from 'rollup-plugin-auto-external';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import multiInput from '@ayan4m1/rollup-plugin-multi-input';
 
 export default {
   input: './src/**/*.js',
@@ -16,7 +16,7 @@ export default {
   plugins: [
     eslint(),
     autoExternal(),
-    multiInput.default(),
+    multiInput(),
     commonjs(),
     nodeResolve(),
     babel({
